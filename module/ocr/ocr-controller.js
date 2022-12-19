@@ -1,11 +1,32 @@
-const vision = require('@google-cloud/vision');
-const client = new vision.ImageAnnotatorClient({keyFilename:'./api-key.json'});
-const detectLandmark = async(file_path)=>{
-    const [result] = await client.landmarkDetection('./resources/random-cnic.jpg');
-    // const labels = result.textAnnotations;
-    console.log(result);
-}
-detectLandmark()
+const express = require('express');
+const ocr = express.Router();
+const {ocrEng, ocrUrd} = require('./ocr-service')
+
+ocr.post('/get-ocr-english', ocrEng);
+ocr.post('/get-ocr-urdu', ocrUrd);
+
+
+
+module.exports = ocr;
+
+
+
+
+
+
+
+
+
+
+
+// const vision = require('@google-cloud/vision');
+// const client = new vision.ImageAnnotatorClient({keyFilename:'./api-key.json'});
+// const detectLandmark = async(file_path)=>{
+//     const [result] = await client.landmarkDetection('./resources/random-cnic.jpg');
+//     // const labels = result.textAnnotations;
+//     console.log(result);
+// }
+// detectLandmark()
 
 
 //   module.exports.ocr= ((req, res, next)=>{
