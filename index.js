@@ -6,7 +6,7 @@ const ocr = require('./module/ocr/ocr-controller');
 var app= express();
 app.use(bodyParser.json({limit: '50mb', extended: true}));
 app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
-app.use(bodyParser.text({ limit: '200mb' }));
+app.use(bodyParser.text({ limit: '200mb' }));yg
 app.use(cors());
 app.use('/ocr', ocr)
 
